@@ -1,7 +1,6 @@
-package iti.jets.Chicly.Spring.Boot.service;
+package iti.jets.Chicly.Spring.Boot.customer.service;
 
 import iti.jets.Chicly.Spring.Boot.customer.domain.CustomerRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
