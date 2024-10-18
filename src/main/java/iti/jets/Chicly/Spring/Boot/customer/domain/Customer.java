@@ -1,6 +1,7 @@
 package iti.jets.Chicly.Spring.Boot.customer.domain;
 
 
+import iti.jets.Chicly.Spring.Boot.order.domain.Order;
 import iti.jets.Chicly.Spring.Boot.shared.domain.Account;
 import iti.jets.Chicly.Spring.Boot.shared.domain.Address;
 import jakarta.persistence.*;
@@ -10,6 +11,8 @@ import jakarta.validation.constraints.Email;
 import lombok.*;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "customer")
@@ -65,15 +68,11 @@ public class Customer{
     @Embedded
     private Account account;
 
-//    @OneToMany(mappedBy ="customer")
-//    private Set<Order> orders = new HashSet<>();
-//    @OneToMany(mappedBy = "customer", cascade = {CascadeType.ALL}, orphanRemoval = true)
-//    private Set<CartItems> shoppingCart = new HashSet<>();
-//
-//    public void addOrder(Order order){
-//        order.setCustomer(this);
-//        orders.add(order);
-//    }
+    @OneToMany(mappedBy ="customer")
+    private Set<Order> orders = new HashSet<>();
 
-
+    public void addOrder(Order order){
+        order.setCustomer(this);
+        orders.add(order);
+    }
 }
